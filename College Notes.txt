@@ -1,0 +1,297 @@
+scala> var var1 = "This is scala"
+var var1: String = This is scala
+
+scala> var var2 = "Hello world"
+var var2: String = Hello world
+
+scala> var var3 = "Hello world"
+var var3: String = Hello world
+
+scala> var var4 = var1.compareTo(var2) ----- comparing strings to each other
+var var4: Int = 12    -- Difference found
+
+scala> var var5 = var2.compareTo(var3)
+var var5: Int = 0     --- same string
+
+scala> var var4 = var2.compareTo(var1)
+var var4: Int = -12   -- diff in previous contact
+
+scala> val seqCollection = Seq(2,4,6,8,10);
+val seqCollection: Seq[Int] = List(2, 4, 6, 8, 10)
+
+scala> val result = seqCollection.apply(1);
+val result: Int = 4                                            -----sequence
+
+scala> println(result)
+4
+..............................................................................
+
+scala> val mapCollections = Map(("a", 97), ("b", 98), ("c", 99), ("d", 100))
+val mapCollections: Map[String, Int] = Map(a -> 97, b -> 98, c -> 99, d -> 100)
+
+scala> val result = mapCollections.apply("c")
+val result: Int = 99                                   ---------map
+
+scala> println(result)
+99
+................................................................................
+
+scala> val setCollection = Set("apple", "Orange", "Grapes", "Banana");
+val setCollection: Set[String] = Set(apple, Orange, Grapes, Banana)
+
+scala> val result = setCollection.apply("Orange");
+val result: Boolean = true                           ------set
+
+scala> println(result);
+true
+..................................................................................
+
+scala> var var1 = Seq(2,4,6,8,10)
+var var1: Seq[Int] = List(2, 4, 6, 8, 10)
+
+scala> var1.foreach(println)
+2
+4                                                       ------ Foreach for sequence
+6
+8
+10
+..................................................................................
+
+scala> var arr1 = Array.range(0,5)
+var arr1: Array[Int] = Array(0, 1, 2, 3, 4)
+
+scala> arr1.foreach(println)
+0
+1                                                     ------ Array creation(range)
+2
+3
+4
+.................................................................................
+
+scala> var arr1 = Array.range(0,10)
+var arr1: Array[Int] = Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+scala> var arr2 = arr1.filter(_ % 2 == 0)
+var arr2: Array[Int] = Array(0, 2, 4, 6, 8)
+
+scala> var arr3 = arr2.map(_ * 2)
+var arr3: Array[Int] = Array(0, 4, 8, 12, 16)
+
+scala> var arr4 = arr3.reverse
+var arr4: Array[Int] = Array(16, 12, 8, 4, 0)
+
+..............................................................................
+
+scala> var arr1 = new Array[String](3)
+var arr1: Array[String] = Array(null, null, null)
+
+scala> arr1(0) = "red"
+
+scala> arr1(1) = "blue"
+
+scala> arr1(2) = "Yellow"                     --- input new values in array by index
+
+scala> arr1.foreach(println)
+red
+blue
+Yellow
+
+              var arr1 = new Array[Int](3)
+var arr1: Array[Int] = Array(0, 0, 0)
+
+scala>                 var arr1 = new Array[Double](3)
+var arr1: Array[Double] = Array(0.0, 0.0, 0.0)
+
+scala>  var arr1 = new Array[Char](3)
+var arr1: Array[Char] = Array(?, ?, ?)
+
+scala>  var arr1 = new Array[Boolean](3)
+var arr1: Array[Boolean] = Array(false, false, false)
+...........................................................................
+
+scala> var arr1 = Array.range(0,5)
+var arr1: Array[Int] = Array(0, 1, 2, 3, 4)
+
+scala> var arr2 = Array.fill(2)("UBD")
+var arr2: Array[String] = Array(UBD, UBD)
+
+scala> var arr3 = "hello".toArray
+var arr3: Array[Char] = Array(h, e, l, l, o)
+
+scala> var arr4 = Array(17,34,23,6,50)
+var arr4: Array[Int] = Array(17, 34, 23, 6, 50)
+
+scala> var ele = arr4(3)                          ------ operations on array 
+var ele: Int = 6
+
+scala> var arr4 = Array(17,34,23,6,50)
+var arr4: Array[Int] = Array(17, 34, 23, 6, 50)
+
+scala> var ele = arr4.length
+var ele: Int = 5
+
+scala> println(ele)
+5
+
+
+scala> val list1 = List("a","b","c","d","e")
+val list1: List[String] = List(a, b, c, d, e)
+
+scala> list1.foreach(println)
+a
+b
+c                            -----creating and display of list
+d
+e
+
+scala> val list1 = List.range(1, 10)
+val list1: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+scala> val list1 = List.fill(3)("UBD")
+val list1: List[String] = List(UBD, UBD, UBD)
+
+scala> list1.foreach(println)
+UBD
+UBD
+UBD
+
+......................................................................
+
+scala> val list1 = "a"::"b"::"c"::"d"::"e"::Nil
+val list1: List[String] = List(a, b, c, d, e)
+
+scala> val list2 = list1 :+ "p"           ---------- Appending element
+val list2: List[String] = List(a, b, c, d, e, p)
+
+scala> val list3 = "w"::list2
+val list3: List[String] = List(w, a, b, c, d, e, p)
+
+scala> val list4 = "m" +: list3          --------prepending elements
+val list4: List[String] = List(m, w, a, b, c, d, e, p)
+
+scala> list4.foreach(println)
+m
+w                            -----------adding values in list using diffrent
+a
+b
+c
+d
+e
+p
+
+.......................................................................
+
+
+scala> val list4 = "pear"::"apricot"::Nil
+val list4: List[String] = List(pear, apricot)
+
+scala> val list5 = list4 ::: list3
+val list5: List[String] = List(pear, apricot, w, a, b, c, d, e, p)
+
+scala> list5.foreach(println)
+pear
+apricot
+w
+a                                        ---------------- Concatenation
+b
+c
+d
+e
+p
+
+
+scala> val list1 = 1 #:: 2 #:: 3 #:: 4 #:: 5 #:: LazyList.empty
+val list1: LazyList[Int] = LazyList(<not computed>)
+                                          ----------------lazyList
+scala> val list2 = 1 :: 2 :: 3 :: 4 :: 5 :: Nil
+val list2: List[Int] = List(1, 2, 3, 4, 5)
+
+scala> val list3 = List.from(1 to 100000000)     --- error
+
+
+scala> val list3 = LazyList.from(1 to 100000000)      --no compute
+val list3: LazyList[Int] = LazyList(<not computed>)
+
+scala> val vector1 = Vector(1,2,3,4,5)
+val vector1: Vector[Int] = Vector(1, 2, 3, 4, 5)
+
+scala> val vector2 = Vector.empty
+val vector2: Vector[Nothing] = Vector()
+                                        ------vector create & append
+scala> val vector3 = Vector("a","b","c")
+val vector3: Vector[String] = Vector(a, b, c)
+
+scala> val vector4 = vector3 :+ "d"
+val vector4: Vector[String] = Vector(a, b, c, d)
+
+scala> val vector5 = "Z" +: vector4
+val vector5: Vector[String] = Vector(Z, a, b, c, d)
+
+..................................................................
+
+
+scala> val nvector = Vector("e","f")
+val nvector: Vector[String] = Vector(e, f)
+
+scala> val nvector1 = vector5 ++ nvector
+val nvector1: Vector[String] = Vector(Z, a, b, c, d, e, f)
+
+scala> println(nvector1)
+Vector(Z, a, b, c, d, e, f)
+
+scala> nvector1.foreach(println)
+Z
+a
+b
+c
+d
+e
+f
+
+scala> def squ(x:Double)={x*x}
+def squ(x: Double): Double
+
+scala> var reu= squ(5)
+var reu: Double = 25.0
+
+scala>
+                      def squSum(x:Double,y:Double)={squ(x)+squ(y)}
+def squSum(x: Double, y: Double): Double
+
+scala> var reu = squSum(3,5)
+var reu: Double = 34.0
+
+scala>            def fac(x:Int) : Int ={if(x == 1) 1 else x *fac(x-1)}
+def fac(x: Int): Int
+
+scala> println(fac(4))
+24
+
+
+scala> def sum(f:Int=> Int, a:Int,b:Int):Int={if(a>b) 0 else f(a)+sum(f,a+1,b)}
+def sum(f: Int => Int, a: Int, b: Int): Int
+
+scala> def id(x:Int):Int=x
+def id(x: Int): Int
+                                           ------Higher order function
+scala> def cube(x:Int):Int=x*x*x
+def cube(x: Int): Int
+
+scala> def fact(x:Int):Int=if(x==0) 1 else x*fact(x-1)
+def fact(x: Int): Int
+
+scala> def sum1(a:Int,b:Int)=sum(cube,a,b)
+def sum1(a: Int, b: Int): Int
+
+scala> println(sum1(1,5)) ----------- Sum of cubes
+225
+
+scala> def sum(f:Int => Int, a:Int, b:Int):Int ={if(a>b) 0 else f(a)+ sum(f,
+a+1,b)}
+def sum(f: Int => Int, a: Int, b: Int): Int
+                                       -------- Higher order function
+scala> def sum1(a:Int,b:Int)= sum(x => x*x*x,a,b)
+def sum1(a: Int, b: Int): Int
+
+scala> println(sum1(1,5))
+225
