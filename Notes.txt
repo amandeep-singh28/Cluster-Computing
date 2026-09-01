@@ -84,3 +84,74 @@ With explicit type:
 You tell Scala:
     age → Int
 
+# Scala Data Types & Literals
+(i) Int
+val age: Int = 21
+
+(ii) Long
+val population: Long = 84561355L
+
+(iii) Float
+val price : Float = 25.5F
+
+(iv) Double
+val price : Double = 25.5
+
+(v) Char -> Single Quotes
+stores one Character 
+val grade : Char = 'A'
+'A'    → Char
+"A"    → String
+
+(vi) Boolean
+Stores only two values: true/false
+val isStudent : Boolean = true
+or
+val result = 10 > 5 // result -> Boolean
+
+(vii) String
+Used for text
+val name: String = "Amandeep"
+
+(viii) Unit -> No meaningful value
+Unit represents no meaningful return value
+It is similar to void
+For example:
+    def display(): Unit = {
+        println("Hello")
+    }
+The function performs an action but doesn't return a useful value.
+
+- What are Literals
+Data type
+Tells us what kind of data something is.
+
+Literal
+The actual value written directly in the program.
+
+Example:
+    val age: Int = 21
+
+Here:
+    Int → data type
+    21  → literal
+
+- Common Literals
+Integer Literal
+Long Literal
+Float literal
+Double literal
+Character literal
+Boolean literal
+String literal
+
+- Type Conversion (Explicit)
+toInt
+toLong
+toFloat
+toDouble
+
+For example:
+    val x = 10.5
+    val y = x.toInt
+
