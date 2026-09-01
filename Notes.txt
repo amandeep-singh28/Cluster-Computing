@@ -155,3 +155,55 @@ For example:
     val x = 10.5
     val y = x.toInt
 
+# Operators in Scala
+(i) Arithmetic
+(ii) Relational
+(iii) Logical
+(iv) Bitwise
+(v) Assignment
+(vi) Compound Assignment
+
+- Arithmetic Operators
++, -, *, /, %
+
+10 / 3 -> Integer (3)
+10.0 / 3 -> Float (3.3333)
+
+- Relational Operators
+==, !=, >, <, >=, <=
+
+10 > 5 -> true
+10 == 5 -> false
+
+- Logical Operators
+&&, ||, !
+
+&& -> Logical AND
+& -> Bitwise AND
+
+- Bitwise Operators
+&, |, ^, ~(Complement), <<(Left Shift), >>(Right Shift)
+
+^ -> XOR Operator(It gives 1 when the bits are different)
+
+- Assignment Operator
+=
+
+- Compound Assignment Operators
++=
+-=
+*=
+/=
+%=
+
+It requires a variable whose value can be changed:
+So:
+    var x = 10
+    x += 5
+✅
+
+But:
+    val x = 10
+    x += 5
+❌
+
