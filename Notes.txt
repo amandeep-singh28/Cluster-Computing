@@ -24,3 +24,63 @@ Instead of writing:
 you can simply do:
     command → result
 
+# val, var & Type Inference
+Scala gives us two important ways to create these bindings:
+
+          Variables
+             │
+       ┌─────┴─────┐
+       ▼           ▼
+      val         var
+   Immutable    Mutable
+
+- val — Immutable
+Meaning:
+    val creates an immutable binding.
+Once you assign a value, you cannot reassign that name to another value.
+
+Example:
+    val age = 21
+    println(age)
+    age = 25 // Error
+
+- var — Mutable
+var is the opposite.
+var creates a mutable binding whose value can be changed later, provided the new value is compatible with its type.
+Example:
+    val age = 21
+    println(21) // 21
+    age = 25
+    println(25) // 25 (No error)
+
+- val vs var
+This is a must-remember CA table:
+
+val	                    var
+Immutable	            Mutable
+Cannot be reassigned	Can be reassigned
+
+- Type Inference
+Look at this:
+    val x = 10
+We didn't write:
+    val x: Int = 10
+
+So how does Scala know x is an Int?
+That's where Type Inference comes in:
+    Type inference allows the Scala compiler to determine the type of a value from the expression assigned to it.
+
+- Explicit Type Declaration
+val age: Int = 21
+val name: String = "Amandeep"
+var marks: Double = 85.5
+
+Without explicit type:
+    val age = 21
+Scala figures out:
+    age → Int
+With explicit type:
+    val age: Int = 21
+You tell Scala:
+    age → Int
+
