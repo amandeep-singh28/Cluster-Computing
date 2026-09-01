@@ -1,0 +1,76 @@
+# RDD - Resilient Distributed Dataset
+An immutable, distributed collection of elements that can be processed in parallel.
+
+- Resilient (Fault Tolerant)
+It means that it can revover lost data.
+
+- Distributed
+Data is divide into partitions and processed across multiple nodes / computers
+
+- Dataset
+Collection of data
+
+- Why RDD
+Imagine you have:
+    10 million records
+
+Processing everything on one machine can be slow.
+Spark can divide the data:
+             RDD
+              │
+       ┌──────┼──────┐
+       ↓      ↓      ↓
+   Partition Partition Partition
+       ↓      ↓      ↓
+     Node 1  Node 2  Node 3
+
+These partitions can be processed in parallel.
+That's one of the major reasons Spark is fast.
+
+- Five main characteristics of RDD
+1. Immutable (Once an RDD is created, it cannot be changed.)
+2. Distributed
+3. Fault Tolerant
+4. Lazy Evaluation
+5. Parallel Processing
+
+- Fault Tolerant (Resilient) - IMP
+Suppose:
+    Partition 1 → A B
+    Partition 2 → C D
+    Partition 3 → E F
+If Partition 2 is lost:
+    Spark can recreate it using lineage
+What is lineage?
+Lineage is basically the record of how an RDD was created from previous RDDs.
+
+For example:
+RDD1
+ ↓ filter()
+RDD2
+ ↓ map()
+RDD3
+
+Spark remembers this relationship.
+If RDD3 data is lost, Spark can use the previous steps to recreate the required data.
+
+- Note:
+Lineage → helps Spark recover lost RDD partitions.
+
+# Lazy Evaluation
+RDD transformations are not executed immediately.
+
+For example:
+    val rdd = sc.parallelize(1 to 10)
+    val even = rdd.filter(x => x % 2 == 0)
+
+You might think filter() immediately processes the numbers.
+It doesn't.
+
+Spark remembers:
+    "Whenever execution is needed,
+    apply filter to this RDD."
+
+Actual execution happens when we call an action.
+For example:
+    even.collect()
