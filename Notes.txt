@@ -207,3 +207,91 @@ But:
     x += 5
 ❌
 
+# Scala Collections
+(i) Seq (Immutable, Ordered Collection + Indexing also there)
+Seq represents a sequence of elements where order matters.
+val seqCollection = Seq(2,4,6,8,10)
+val seqCollection = Seq(2,4,6,8,"Hello")
+
+- Can access element using index (0 -> len -1)
+seqCollection.apply(0)
+
+(ii) Map (Immutable, It stores data as key-value pairs)
+val mapCollections =
+  Map(("a",97), ("b",98), ("c",99), ("d",100))
+
+mapCollections.apply("c") // for retrieving a value
+
+(iii) Set (Immutable, Stores Unique elements)
+val seqCollection = Set("apple", "orange")
+- Can check whether an element exists or not:
+    setCollection.apply("Orange")
+    true
+
+(iv) Array (It stores multiple elements of the same type)
+var arr1 = Array.range(0,5)
+Output - Array(0, 1, 2, 3, 4)
+
+- Accessing array elements
+val arr = Array(17,34,23,6,50)
+val ele = arr(3) // 6
+
+- Array length
+arr.length
+
+# Array filter() & map()
+- Filter()
+val arr1 = Array.range(0, 10) // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+var arr2 = arr1.filter(x => x % 2 == 0)
+OR
+var arr2 = arr1.filter(_ % 2 == 0) // Short trick
+
+- Map()
+val arr1 = Array.range(0, 10) // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+val arr2 = arr1.map(x => x * 2)
+OR
+val arr2 = arr1.map(_ * 2)
+
+# foreach()
+val arr = Array.range(0, 10)
+arr.foreach(println)
+
+# List (Immutable)
+val list1 = List("a","b","c","d","e")
+Output:
+    List(a,b,c,d,e)
+
+You can also create one using:
+    List.range(1,10)
+
+- Adding elements to List
+(i) :+ -> append to the end
+val list2 = list1 :+ "p" // [ a b c d e p ]
+
+(ii) +: -> append at the beginning
+val list3 = "l" +: list2 // w,a,b,c,d,e,p
+
+(iii) prepend
+val list = "a" :: "b" :: "c" :: Nil // Nil is important as it indicates the end of the list
+
+(iv) ::: -> Concatenate lists
+val list5 = list4 ::: list3
+
+# Vector (Immutable)
+val vector1 = Vector(1,2,3,4,5)
+
+You can append:
+    val vector4 = vector3 :+ "d"
+and prepend:
+    val vector5 = "Z" +: vector4
+You can also combine vectors:
+    val nvector1 = vector5 ++ nvector
+
+:+ → append
++: → prepend
+++ → concatenate collections
+
+# LazyList (A LazyList computes elements lazily, meaning elements are not computed until they are needed.)
+val list1 =
+  1 #:: 2 #:: 3 #:: 4 #:: 5 #:: LazyList.empty
+
