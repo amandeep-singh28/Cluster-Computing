@@ -1,0 +1,26 @@
+# Scala
+It is the programming language of the Apache Spark
+Scala is a programming language that combines Object-Oriented Programming (OOP) and Functional Programming (FP).
+
+- Why Scala?
+Because Spark programs can be written using Scala.
+
+- REPL
+It stands for:
+    R — Read
+    E — Evaluate
+    P — Print
+    L — Loop
+It is an environment where we enter one command, Scala evaluates it immediately, displays the result/error, and waits for the next command.
+
+Example:
+    scala> 10 + 20
+Scala immediately evaluates it:
+    res0: Int = 30
+
+- Why is REPL useful?
+Instead of writing:
+    program → compile → run → check result
+you can simply do:
+    command → result
+
