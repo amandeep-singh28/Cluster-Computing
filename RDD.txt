@@ -74,3 +74,103 @@ Spark remembers:
 Actual execution happens when we call an action.
 For example:
     even.collect()
+
+# How can we create an RDD?
+There are particular three methods to create an RDD:
+1. parallelize()
+2. textFile()
+3. DataFrame.rdd
+
+(i) parallelize()
+We can create RDD from collections also but we have to use "sc"
+For example:-
+val r1 = sc.parallelize(
+    Seq(("A",1),("B",2),("C",3))
+)
+r1.collect().foreach(println)
+
+(ii) textFile()
+Used to create an RDD by reading a text filter
+val r2 = sc.textFile("D:\data.txt")
+    Each line of the text file becomes an element of the RDD.
+
+(iii) DataFrame - RDD
+val r4 = spark.range(20).toDF().rdd
+
+Step 1
+spark.range(20)
+Creates:
+    0, 1, 2, ..., 19
+
+Step 2
+.toDF()
+Converts it into a DataFrame.
+
+Step 3
+.rdd
+Converts the DataFrame into an RDD.
+
+So:
+    spark.range(20)
+        ↓
+        DataFrame
+        ↓ .rdd
+        RDD
+
+- Partitions (Important)
+RDD data is divided into partitions
+val rdd = sc.parallelize(Array(1, 2, 3, 4), 3)
+
+- Transformations vs Actions
+RDD operations are divided into:
+    - Transformations
+    - Actions
+
+-> Transformations
+A transformations creates a new RDD
+For example:-
+map()
+flatMap()
+filter()
+distinct()
+union()
+groupByKey()
+sortByKey()
+join()
+coalesce()
+
+For example:-
+    val x = sc.parallelize(1 to 10)
+    val y = x.filter(z => z % 2 == 0)
+Here:
+x
+↓ filter()
+y
+
+A new RDD y is created.
+And because it's a transformation:
+It is evaluated lazily.
+
+-> Action
+An action returns a result or triggers execution.
+
+Examples from your notes:
+    collect()
+    foreach()
+    count()
+    first()
+
+Example:
+val y = x.filter(z => z % 2 == 0)
+y.collect()
+
+Here:
+    filter()
+    ↓
+    Transformation
+    ↓
+    collect()
+    ↓
+    Action
+    ↓
+    Execution
