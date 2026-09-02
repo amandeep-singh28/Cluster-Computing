@@ -341,3 +341,65 @@ But Scala can often infer the return type:
     def square(x: Int) = {
         x * x
     }
+
+# Recursive Functions
+A recursive function is a function that calls itself.
+def factorial(x: Int): Int = {
+    if (x <= 1) 1
+    else x * factorial(x - 1)
+}
+
+# Higher Order Functions
+A normal function takes data as input.
+But
+A Higher-Order Function (HOF) is simply a function that can take another function as an argument or return a function.
+
+For example:-
+def square(x: Int): Int = {
+    x * x
+}
+Now imagine we create:
+    def calculate(f: Int => Int, x: Int): Int = {
+        f(x)
+    }
+Here calculate() takes two things:
+    f -> a function
+    x -> an Integer
+So,
+    calculate(
+        function,
+        number
+    )
+That's a Higher Order Function
+
+- What does Int => Int mean?
+A function that takes an Int and returns an Int
+For example:
+    def square(x: Int): Int = x * x
+This is:
+    Int → Int
+
+- Passing the function
+calculate(square, 5)
+Here we wrote:
+    square
+NOT:
+    square(5)
+
+Why?
+    Because we want to give the function itself to calculate().
+
+Think of it like this:
+    square
+    ↓
+    "Here is the function.
+    You decide when to use it."
+
+Then calculate() does:
+    f(x)
+
+which becomes:
+    square(5)
+which gives:
+    25
+
