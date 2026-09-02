@@ -220,3 +220,19 @@ rdd3.collect() // Array((a,(1,4)), (b,(2,5)))
 It changes the number of partitions
 var rdd1 = sc.parallelize(Array(1, 2, 3, 4), 3)
 var result = rdd1.coalesce(2)
+
+# RDD Actions
+An RDD operation that returns a result or triggers execution
+
+(i) collect()
+It brings all elements together 
+
+(ii) foreach()
+
+(iii) count()
+It returns number of elements in a RDD
+
+(iv) first()
+It returns the first element of the RDD
+val x = sc.parallelize(Array(10,20,30,40))
+x.first()
