@@ -295,3 +295,49 @@ You can also combine vectors:
 val list1 =
   1 #:: 2 #:: 3 #:: 4 #:: 5 #:: LazyList.empty
 
+# Functions
+Syntax:
+    def functionName(parameter: Type): ReturnType = {
+        // body
+    }
+For example:
+    def squ(x: Double): Double = {
+        x * x
+    }
+
+Calling the function
+squ(5)
+OR
+println(squ(5))
+
+- Multiple Parameters
+A function can accept multiple Parameters
+def squSum(x: Double, y: Double) = {
+    squ(x) + squ(y)
+}
+Now:
+    squSum(3, 5)
+
+means:
+    squ(3) + squ(5)
+    ↓
+    9 + 25
+    ↓
+    34
+So:
+
+    34.0
+
+- Return Type
+You can explicitly specify the return type:
+    def square(x: Int): Int = {
+        x * x
+    }
+Here:
+    Input  → Int
+    Output → Int
+But Scala can often infer the return type:
+
+    def square(x: Int) = {
+        x * x
+    }
