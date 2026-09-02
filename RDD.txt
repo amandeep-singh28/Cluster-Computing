@@ -174,3 +174,49 @@ Here:
     Action
     ↓
     Execution
+
+# RDD Transformations
+It is an operation that creates a new RDD
+(i) map()
+It applies a function to every element of an RDD
+var rdd = sc.parallelize(Array(1, 2, 3))
+rdd.map(x => x * 2).collect()
+
+(ii)flatMap()
+Results get flattened into a single RDD
+
+(iii) filter()
+var x = sc.parallelize(1 to 10)
+var y = x.filter(z => z % 2 == 0)
+y.collect()
+
+(iv) Union() -> Does not remove duplicates
+It combines two RDDs into one
+var rdd1 = sc.parallelize(Array(1, 2, 3, 4))
+var rdd2 = sc.parallelize(Array(4, 5, 6, 7))
+var rdd3 = rdd1.union(rdd2)
+rdd3.collect()
+
+(v) Distinct() -> It removes duplicate
+var rdd1 = sc.parallelize(Array(1, 2, 3, 4, 5, 5))
+var rdd2 = rdd1.distinct()
+rdd2.collect()
+
+(vi) groupByKey() -> It groups the value that have same key
+var rdd1 = sc.parallelize(Seq(("a", 1), ("b", 2), ("a", 2), ("c", 4), ("b", 5)))
+var group = rdd1.groupByKey()
+
+(vii) sortByKey() -> It sorts the RDD according to its keys
+var rdd1 = sc.parallelize(Seq(("a", 1), ("b", 2), ("a", 2), ("c", 4), ("b", 5)))
+rdd1.sortByKey().collect()
+
+(viii) join() -> Join two RDDs with their commom keys
+var rdd1 = sc.parallelize(Seq(("a", 1), ("b", 2), ("c", 3)))
+var rdd2 = sc.parallelize(Seq(("a", 4), ("b", 5), ("d", 4)))
+var rdd3 = rdd1.join(rdd2)
+rdd3.collect() // Array((a,(1,4)), (b,(2,5)))
+
+(ix) coalesce()
+It changes the number of partitions
+var rdd1 = sc.parallelize(Array(1, 2, 3, 4), 3)
+var result = rdd1.coalesce(2)
