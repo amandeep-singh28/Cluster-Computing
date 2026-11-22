@@ -1,0 +1,143 @@
+>>> from pyspark.sql import SparkSession
+
+>>> spark = SparkSession.builder.getOrCreate()
+
+>>> data = spark.read.csv('D:/LPU/Spark/color.csv',header=True,inferSchema=True)
+
+>>> data.show()
+
+>>> from pyspark.ml.feature import StringIndexer
+>>> indexer = StringIndexer(inputCol = "color",outputCol = "colorindexed")
+>>> indexermodel = indexer.fit(data)
+>>> indexerdata = indexermodel.transform(data)
+>>> indexer_data.show()
+
+
+>>> from pyspark.ml.feature import VectorAssembler
+>>> assembler = VectorAssembler(inputCols=data.columns[1:],outputCol="feature")
+>>> data1 = assembler.transform(data)
+>>> data1.show()
+
+
+>>> from pyspark.ml.feature import StandardScaler
+>>> scaler = StandardScaler(inputCol="feature",outputCol="scaled-features")
+>>> scalermodel=scaler.fit(data1)
+>>> scaleddata = scalermodel.transform(data1)
+>>> scaleddata.show()
+
+--------------------------------------------------------------
+
+>>> from pyspark.sql import SparkSession
+>>> spark = SparkSession.builder.getOrCreate()
+>>> data = spark.read.csv('D:/LPU/Spark/boston_housing.csv',header=True,inferSchema=True)
+>>> data.show()
+
+>>> featurecolums = data.columns[:-1]
+>>> from pyspark.ml.feature import VectorAssembler
+
+>>> assembler = VectorAssembler(inputCols=featurecolums,outputCol="features")
+>>> data1 = assembler.transform(data)
+>>> train,test = data1.randomSplit([0.7,0.3])
+>>> from pyspark.ml.regression import LinearRegression
+
+>>> algo = LinearRegression(featuresCol="features",labelCol="medv")
+>>> model = algo.fit(train)
+
+>>> evaluation_summary = model.evaluate(test)
+>>> evaluation_summary.meanAbsoluteError
+3.360474408865198
+>>> predictions = model.transform(test)
+>>> predictions.select(predictions.columns[13:]).show()
+
+
+---------------------------------------------------
+
+>>> from pyspark.sql import SparkSession
+>>> spark = SparkSession.builder.getOrCreate()
+>>> df = spark.read.csv('D:/LPU/Cluster Computing/iris.csv',header=True,inferSchema=True)
+>>> df.show()
+
+from pyspark.ml.feature import VectorAssembler
+vectorassembler = VectorAssembler(inputCols=df.columns[:-1],outputCol="features")
+df1 = vectorassembler.transform(df)
+
+from pyspark.ml.feature import StringIndexer
+lindexer = StringIndexer(inputCol="species", outputCol="labelIndex")
+df1 = lindexer.fit(df1).transform(df1)
+(trainingData, testData) = df1.randomSplit([0.7, 0.3])
+
+from pyspark.ml.feature import StringIndexer
+lindexer = StringIndexer(inputCol="species", outputCol="labelIndex")
+df1 = lindexer.fit(df1).transform(df1)
+(trainingData, testData) = df1.randomSplit([0.7, 0.3])
+
+>>> from pyspark.ml.classification import DecisionTreeClassifier
+>>> from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+
+
+>>> predictions = model.transform(testData)
+>>> predictions.select("prediction", "labelIndex").show(5)
+
+>>> evaluator = MulticlassClassificationEvaluator(labelCol="labelIndex", predictionCol="prediction",metricName="accuracy")
+>>> accuracy = evaluator.evaluate(predictions)
+>>> print("Test Error = %g " % (1.0 - accuracy))
+Test Error = 0.0408163
+>>> print(model)
+
+
+--------------------------------------------------------------
+
+from pyspark.sql import SparkSession
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.clustering import KMeans
+
+# Create Spark session
+spark = SparkSession.builder \
+    .appName("KMeansCustomerClustering") \
+    .getOrCreate()
+
+# Load CSV
+df = spark.read.csv(
+    "D:/LPU/Spark/clustering/customer_clustering.csv",
+    header=True,
+    inferSchema=True
+)
+
+df.show()
+
+>>> assembler = VectorAssembler(
+...     inputCols=["Age", "AnnualIncome", "SpendingScore"],
+...     outputCol="features"
+... )
+>>> data = assembler.transform(df)
+>>> data.show()
+
+kmeans = KMeans(
+    k=3,
+    seed=42,
+    featuresCol="features"
+)
+
+
+# Train model
+model = kmeans.fit(data)
+
+# Predict clusters
+predictions = model.transform(data)
+
+
+>>> predictions.select(
+...     "CustomerID",
+...     "Age",
+...     "AnnualIncome",
+...     "SpendingScore",
+...     "prediction"
+... ).show()
+
+
+>>> for i, center in enumerate(model.clusterCenters()):
+...     print("Cluster", i, ":", center)
+
+
+----------------------------------------------------------------
+
