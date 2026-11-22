@@ -1,0 +1,51 @@
+import spark.implicits._   // Adds the toDF() conversion for Scala collections and RDDs
+import org.apache.spark.sql.SparkSession  // Spark SQL entry point
+
+// Define column names that will be applied to the DataFrame later.
+val col = Seq("team", "matches")
+
+// Create the sample records exactly as shown in the PPT.
+val data = Seq(("India", 300), ("Australia",200))
+val rdd = spark.sparkContext.parallelize(data)
+
+val df1 = rdd.toDF()
+df1.show()  // Display data in tabular form
+
+// Execution adjustment: use a new variable to avoid redefining df1.
+val df1Named = rdd.toDF("team", "matches")
+df1Named.show()  // Display with meaningful column names
+
+
+import org.apache.spark.sql.SparkSession
+
+val spark = SparkSession.builder().master("local[1]").appName("SparkByExamples.com").getOrCreate()
+
+val df = spark.read.option("header",true).csv("D:/LPU/Spark/SPARKSQL/color.csv")
+
+df.show()
+
+val df1=spark.read.option("header",true).csv("D:/LPU/Spark/SPARKSQL/color.csv").createOrReplaceTempView("COL")
+
+spark.sql("select * from COL").show()
+
+
+val df1=spark.read.option("header",true).csv("D:/LPU/Spark/SPARKSQL/color.csv").createOrReplaceTempView("COL")
+
+spark.sql("select * from COL").show()
+
+spark.sql("select * from COL where category ='Primary'").show()
+
+
+val df2=spark.read.option("header",true).csv("D:/LPU/Spark/SPARKSQL/employee.csv").createOrReplaceTempView("EMP")
+
+spark.sql("select * from EMP where salary >55000").show()
+
+spark.sql("select * from EMP order by salary").show()
+
+spark.sql("select count(ID) from EMP group by Department").show()
+
+spark.sql("select Department, count(ID) from EMP group by Department").show()
+
+spark.sql("Select max(salary) from EMP").show()
+spark.sql("Select min(salary) from EMP").show()
+spark.sql("Select avg(salary) from EMP").show()
