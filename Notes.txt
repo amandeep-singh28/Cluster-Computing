@@ -403,3 +403,77 @@ which becomes:
 which gives:
     25
 
+---------------------------------------------------
+UNIT 6
+
+1. What is a Spark session?
+A SparkSession is the entry point for working with Spark. We use it to read data and perform Spark operations.
+
+2. SparkSession.builder.getOrCreate()
+Gets an existing Spark session or creates one if it does not exist.
+
+3. header=True
+Tells Spark that the first row contains column names.
+
+4. inferSchema=True
+Tells Spark to detect the data types of columns, such as integer, decimal, or string.
+
+5. StringIndexer?
+It converts text categories into numerical labels
+
+6. VectorAssembler
+VectorAssembler combines multiple independent columns into one vector column. Spark ML algorithms expect independent features to be provided together in this vector format.
+
+7. StandardScaler
+StandardScaler scales the features so they are on comparable scales. This is useful for algorithms such as K-Means, which use distances between data points.
+
+8. randomSplit()
+Splits a DataFrame into separate datasets, usually for training and testing the model.
+
+9. train_data and test_data
+train_data is used to train the model, while test_data is used to check how well the model performs on unseen data.
+
+10. DecisionTreeClassifier
+A supervised machine learning algorithm used for classification. It makes decisions by splitting data based on feature values.
+
+11. LinearRegression
+A supervised machine learning algorithm used to predict a continuous numerical value, such as house price.
+
+12. LogisticRegression
+A supervised machine learning algorithm used for classification. It predicts the probability of a class, such as Pass or Fail.
+
+13. KMeans
+An unsupervised machine learning algorithm that groups similar data points into clusters. The k parameter specifies the number of clusters.
+
+14. fit()
+Trains the machine learning model using the provided training data.
+
+15. transform()
+Uses the trained model to make predictions or add output columns to a DataFrame.
+
+16. prediction
+The output produced by a trained model for each input data point.
+
+17. RegressionEvaluator
+Evaluates regression models using metrics such as RMSE, MAE, and R².
+
+18. MulticlassClassificationEvaluator
+Evaluates classification models using metrics such as accuracy, F1 score, weighted precision, and weighted recall.
+
+19. ClusteringEvaluator
+Evaluates clustering results. The Silhouette score indicates how well data points fit within their assigned clusters compared with other clusters.
+
+20. Accuracy
+The proportion of predictions that the model classified correctly.
+
+21. RMSE (Root Mean Squared Error)
+Measures the typical size of prediction errors in a regression model. A lower RMSE generally indicates better predictions.
+
+22. MAE (Mean Absolute Error)
+Measures the average absolute difference between actual and predicted values. A lower MAE generally indicates better predictions.
+
+23. R² (R-squared)
+Measures how well a regression model explains variation in the target values. A value closer to 1 generally indicates a better fit.
+
+24. Silhouette Score
+Measures how well-separated the clusters are. Its value ranges from -1 to 1, and a higher score generally indicates better-separated clusters. 
