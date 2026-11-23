@@ -1,0 +1,7 @@
+StudentID,StudyHours,Attendance,PracticeTests,Result
+101,2.0,70,1,Pass
+102,3.5,85,3,Pass
+103,1.0,60,0,Fail
+104,5.0,95,5,Pass
+105,4.0,90,4,Pass
+106,2.5,75,2,Fail

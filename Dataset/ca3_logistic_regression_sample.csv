@@ -1,0 +1,13 @@
+StudentID,StudyHours,Attendance,PracticeTests,Result
+201,1,55,1,Fail
+202,2,60,2,Fail
+203,2,68,1,Fail
+204,3,65,3,Fail
+205,3,72,2,Fail
+206,4,75,3,Pass
+207,4,80,4,Pass
+208,5,78,3,Pass
+209,5,85,4,Pass
+210,6,88,5,Pass
+211,7,92,5,Pass
+212,8,95,6,Pass
