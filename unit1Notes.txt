@@ -1,0 +1,97 @@
+1. What is Apache Spark?
+Apache Spark is an open-source, distributed data-processing engine used to process and analyse large amounts of data quickly.
+- Open-source: Its source code is publicly available.
+- Distributed: It can divide work across multiple computers.
+- Data-processing engine: It provides tools to process data; it can work with storage systems such as HDFS, cloud storage, and local files.
+
+How Spark works
+1. Spark divides a large job into smaller tasks.
+2. It distributes those tasks across available computers or cores.
+3. The tasks process their assigned data.
+4. Spark combines the results.
+Key idea: Spark is designed to process large datasets in parallel.
+
+2. Map Reduce (Good for batch processing)
+It was a programming model in Hadoop which is used to process large datasets across multiple computers.
+It works mainly in 2 stages:-
+(i) Map :- Converts input data into intermediate key-value pairs.
+(ii) Reduce :- Combines the values of similar keys to produce the final result.
+
+Hadoop Map-reduce was good for processing large amounts of data but it was slow for some tasks.
+Spark become useful because it can process the data much faster by keeping it in the memory instead of repeatedly reading and writing to disk. (Good for both - batch and real time processing)
+- Limitations of Map-reduce
+(i) Frequent Disk I/O
+(ii) Slow machine learning
+(iii) Slow real-time processing
+
+3. Batch processing vs Real time processing
+(i) Batch processing (collect first, process later)
+Data is gathered and processed in groups at scheduled time or when a group is ready.
+For example:-
+Wait until 100 students records arrives, then process all data at once.
+
+(ii) Real-time processing (process as data arrives)
+Incoming data is processed continously.
+For example:-
+When a single student record arrives, process that record immediately.
+
+4. Stream Processing (Spark supports this)
+Stream processing means processing data continuously as it arrives, instead of waiting for a large batch of data to be collected.
+
+Applications and examples
+- Fraud detection: A bank checks transactions as they happen and flags suspicious activity.
+- Live monitoring: A system processes sensor readings from machines to detect overheating or faults.
+- Social media analytics: A system tracks incoming posts, likes, or comments to show current trends.
+- Traffic monitoring: A system analyses live traffic data to identify congestion and update traffic information.
+
+5. In-Memory Processing (Spark supports this)
+In-memory processing means processing data directly in RAM (main memory) instead of repeatedly reading and writing it to disk.
+
+6. Features and Benefits of Apache Spark
+Apache Spark has several features that make it useful for processing and analysing large datasets.
+Main features
+(i). Fast processing
+Spark can keep reusable data in memory, reducing repeated disk access.
+
+(ii). Distributed processing
+It divides work across multiple computers so they can process data in parallel.
+
+(iii). Supports batch and stream processing
+Spark can process stored datasets as well as continuously arriving data streams.
+
+(iv). Supports multiple workloads
+Spark provides libraries for SQL queries, machine learning, stream processing, and graph processing.
+
+(v). Fault tolerance
+Spark can recover lost data or work in many cases by using information about how data was computed.
+
+(vi). Works with different storage systems
+Spark can read data from sources such as HDFS, cloud storage, and local files.
+
+Benefits
+- Handles large volumes of data.
+- Can speed up repeated and multi-stage data processing.
+- Supports different types of data analytics within one framework.
+- Scales from a single computer to a cluster of computers.
+
+7. Apache Spark vs. Hadoop Ecosystem
+(i) Main purpose
+- Hadoop: An ecosystem of tools for distributed storage and processing of big data.
+- Spark: A distributed data-processing engine.
+(ii) Processing
+- Hadoop MapReduce: Traditionally processes data in Map and Reduce stages.
+- Spark: Supports batch processing, streaming, SQL, and machine learning workloads.
+(iii) Processing speed
+- Hadoop MapReduce: Often slower for iterative tasks because intermediate results are written to disk.
+- Spark: Can be faster for repeated calculations by keeping reusable data in memory.
+(iv) Storage
+- Hadoop: Commonly uses HDFS for distributed storage.
+- Spark: Can read data from HDFS, cloud storage, local files, and other sources.
+(v) Components
+- Hadoop: Includes tools such as HDFS, YARN, and MapReduce.
+- Spark: Includes Spark Core, Spark SQL, Structured Streaming, and MLlib.
+(vi) Machine learning
+- Hadoop MapReduce: Iterative machine learning can involve repeated disk operations.
+- Spark: MLlib provides machine learning tools and algorithms.
+(vii) Relationship
+- Spark and Hadoop are not necessarily alternatives. Spark can process data stored in HDFS and run with Hadoop cluster-management tools.
