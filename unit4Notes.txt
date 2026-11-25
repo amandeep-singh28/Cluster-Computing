@@ -105,3 +105,34 @@ spark.sql("""
   FULL OUTER JOIN DEPT
   ON EMP.deptId = DEPT.deptId
 """).show()
+
+
+## GROUP BY
+import spark.implicits._
+
+val empData = Seq(
+  (1, "Aman", "IT", 60000),
+  (2, "Ravi", "HR", 50000),
+  (3, "Simran", "IT", 70000),
+  (4, "Priya", "HR", 55000),
+  (5, "Karan", "Sales", 45000)
+)
+
+val empRDD = spark.sparkContext.parallelize(empData)
+val empDF = empRDD.toDF("ID", "Name", "Department", "Salary")
+
+empDF.show()
+
+empDF.createOrReplaceTempView("EMP")
+
+- spark.sql("""
+  SELECT Department, COUNT(ID)
+  FROM EMP
+  GROUP BY Department
+""").show()
+
+- spark.sql("""
+  SELECT Department, AVG(Salary)
+  FROM EMP
+  GROUP BY Department
+""").show()
