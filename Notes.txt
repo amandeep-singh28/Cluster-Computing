@@ -122,6 +122,12 @@ For example:
     }
 The function performs an action but doesn't return a useful value.
 
+(ix) Byte
+val a : Byte = 10
+
+(x) Short
+val b : Short = 10
+
 - What are Literals
 Data type
 Tells us what kind of data something is.
