@@ -1,0 +1,47 @@
+Topic 1: Importance and Features of Spark SQL
+What is Spark SQL?
+Spark SQL is a component of Apache Spark used to process and analyse structured data using SQL queries.
+
+It lets us query data stored in Spark DataFrames using familiar SQL commands such as SELECT, WHERE, GROUP BY, and ORDER BY.
+
+Simple example
+Suppose we have an employee DataFrame with columns like ID, Department, and Salary.
+
+We can use Spark SQL to find employees whose salary is greater than 55,000:
+spark.sql("SELECT * FROM EMP WHERE salary > 55000").show()
+
+Here, EMP is a temporary view created from the employee DataFrame
+
+
+Features of Spark SQL
+1. SQL query support: Supports common SQL operations such as SELECT, WHERE, GROUP BY, and ORDER BY.
+2. DataFrame integration: Allows Spark DataFrames to be queried using SQL.
+3. Temporary views: A DataFrame can be registered as a temporary view and then queried by name.
+4. Built-in functions: Supports aggregate functions such as COUNT, MAX, MIN, and AVG.
+5. Distributed execution: Spark can process data across multiple machines when running on a cluster
+
+
+
+Topic 2: Methods to Convert RDDs to DataFrames
+
+- Method 1: Convert an RDD using toDF()
+import spark.implicits._
+
+val data = Seq(("India", 300), ("Australia", 200))
+val rdd = spark.sparkContext.parallelize(data)
+
+val df1 = rdd.toDF() # Here the column names would be as _1 and _2 (Default column names)
+df1.show()
+
+- Method 2: Convert an RDD using toDF() with column names
+val df1Named = rdd.toDF("team", "matches")
+df1Named.show()
+
+
+Topic 3: Concepts of Spark SQL
+If you want to use SQL syntax, you need to register the DataFrame as a temporary view first.
+
+val df = spark.read.option("header", true).csv("E:/Cluster Computing/Dataset/colorSQL.csv")
+
+df.createOrReplaceTempView("COL")
+
