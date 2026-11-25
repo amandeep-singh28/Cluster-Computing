@@ -136,3 +136,26 @@ empDF.createOrReplaceTempView("EMP")
   FROM EMP
   GROUP BY Department
 """).show()
+
+## Order By
+
+spark.sql("select * from EMP order by salary").show()
+
+spark.sql("select * from EMP order by salary DESC").show()
+
+## SQL Wildcards
+
+1. Names starting with A:
+spark.sql("SELECT * FROM EMP WHERE Name LIKE 'A%'").show()
+
+Matches Aman, Arjun, Anu, and Avi.
+
+2. Names ending with a:
+spark.sql("SELECT * FROM EMP WHERE Name LIKE '%a'").show()
+
+Matches Riya.
+
+3. Names containing r:
+spark.sql("SELECT * FROM EMP WHERE Name LIKE '%r%'").show()
+
+Matches Arjun.
