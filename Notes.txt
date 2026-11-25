@@ -220,21 +220,27 @@ val seqCollection = Seq(2,4,6,8,10)
 val seqCollection = Seq(2,4,6,8,"Hello")
 
 - Can access element using index (0 -> len -1)
+seqCollection(0)
 seqCollection.apply(0)
 
 (ii) Map (Immutable, It stores data as key-value pairs)
 val mapCollections =
   Map(("a",97), ("b",98), ("c",99), ("d",100))
 
+mapCollections('a')
 mapCollections.apply("c") // for retrieving a value
 
 (iii) Set (Immutable, Stores Unique elements)
 val seqCollection = Set("apple", "orange")
+
+val set1 = Set(1, 2, 2) // Here 2 is repeating, so it will exclude 2
+
 - Can check whether an element exists or not:
-    setCollection.apply("Orange")
+    setCollection.apply("orange")
+    setCollection("apple")
     true
 
-(iv) Array (It stores multiple elements of the same type)
+(iv) Array (It stores multiple elements of the same type, Mutable)
 var arr1 = Array.range(0,5)
 Output - Array(0, 1, 2, 3, 4)
 
@@ -262,8 +268,11 @@ val arr2 = arr1.map(_ * 2)
 val arr = Array.range(0, 10)
 arr.foreach(println)
 
-# List (Immutable)
+# List (Immutable, Ordered, Duplicates, Indexing)
 val list1 = List("a","b","c","d","e")
+
+val list = "a" :: "b" :: "c" :: Nil // Nil is important as it indicates the end of the list
+
 Output:
     List(a,b,c,d,e)
 
@@ -271,14 +280,14 @@ You can also create one using:
     List.range(1,10)
 
 - Adding elements to List
-(i) :+ -> append to the end
+(i) :+ -> append to the end {Only one element can be added}
 val list2 = list1 :+ "p" // [ a b c d e p ]
 
-(ii) +: -> append at the beginning
+(ii) +: -> append at the beginning {Only one element can be added}
 val list3 = "l" +: list2 // w,a,b,c,d,e,p
 
-(iii) prepend
-val list = "a" :: "b" :: "c" :: Nil // Nil is important as it indicates the end of the list
+(iii) prepend (adding element at the beginning of the list) :: {Only one element can be added}
+val list3 = "l" :: list2
 
 (iv) ::: -> Concatenate lists
 val list5 = list4 ::: list3
