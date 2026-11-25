@@ -45,3 +45,63 @@ val df = spark.read.option("header", true).csv("E:/Cluster Computing/Dataset/col
 
 df.createOrReplaceTempView("COL")
 
+## Joins
+import spark.implicits._
+
+// Employee data
+val empData = Seq(
+  (1, "Aman", 10),
+  (2, "Ravi", 20),
+  (3, "Simran", 30)
+)
+
+val empRDD = spark.sparkContext.parallelize(empData)
+val empDF = empRDD.toDF("id", "name", "deptId")
+
+empDF.show()
+
+// Department data
+val deptData = Seq(
+  (10, "IT"),
+  (20, "HR"),
+  (40, "Sales")
+)
+
+val deptRDD = spark.sparkContext.parallelize(deptData)
+val deptDF = deptRDD.toDF("deptId", "department")
+
+deptDF.show()
+
+empDF.createOrReplaceTempView("EMP")
+deptDF.createOrReplaceTempView("DEPT")
+
+- Performing Joins
+spark.sql("""
+  SELECT EMP.name, DEPT.department
+  FROM EMP
+  INNER JOIN DEPT
+  ON EMP.deptId = DEPT.deptId
+""").show()
+
+spark.sql("""
+  SELECT EMP.name, DEPT.department
+  FROM EMP
+  LEFT JOIN DEPT
+  ON EMP.deptId = DEPT.deptId
+""").show()
+
+
+spark.sql("""
+  SELECT EMP.name, DEPT.department
+  FROM EMP
+  RIGHT JOIN DEPT
+  ON EMP.deptId = DEPT.deptId
+""").show()
+
+
+spark.sql("""
+  SELECT EMP.name, DEPT.department
+  FROM EMP
+  FULL OUTER JOIN DEPT
+  ON EMP.deptId = DEPT.deptId
+""").show()
